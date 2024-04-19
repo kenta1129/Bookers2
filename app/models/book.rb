@@ -1,2 +1,6 @@
 class Book < ApplicationRecord
+
+
+
+
 end
