@@ -1,0 +1,36 @@
+<h2>User info</h2>
+<table class='table'>
+  <tr>
+    <td><%= image_tag 'no_image.jpg' %></td>
+  </tr>
+  <tr>
+    <th>name</th>
+    <th></th>
+  </tr>
+  <tr>
+    <th>introduction</th>
+    <th></th>
+  </tr>
+</table>
+<li>
+  <%= link_to edit_user_path(@user),class: "btn btn-outline-secondary btn-block"  do %>
+    <i class="fas fa-user-cog"> </i>
+</li>
+
+<% end %>
+
+
+  <%= form_with(model: @user) do |f| %>
+  <h7>Title</h7>
+  <br>
+  <%= f.text_field :title %>
+  <br>
+
+  <h7>Opinion</h7>
+  <br>
+  <%= f.text_area :body, class:"form-control", rows:"3" %>
+  <br>
+
+  <%= f.submit "Create Book", class: "btn btn-success" %>
+
+<% end %>

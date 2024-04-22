@@ -4,12 +4,16 @@
     <title>Bookers2</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+     <script src="https://kit.fontawesome.com/b50421887c.js" crossorigin="anonymous"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
     <%= render 'layouts/header' %>
-    <%= yield %>
+    <main>
+      <p id="notice"><%= flash[:notice] %></p>
+      <%= yield %>
+    </main>
     <%= render 'layouts/footer'  %>
   </body>
 </html>
