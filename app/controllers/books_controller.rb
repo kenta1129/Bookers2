@@ -14,9 +14,9 @@ before_action :is_matching_login_user, only: [:edit, :destroy]
     flash[:notice] = "You have created book successfully."
     redirect_to book_path(@book)
     
-  else
-    redirect_to books_path
-  end
+    else
+    render:index
+    end
   end
    
   def update
@@ -44,11 +44,11 @@ before_action :is_matching_login_user, only: [:edit, :destroy]
   end
   
   def destroy
-    book = Book.find(params[:id])
-      book.destroy
-      flash[:notice]="Book was successfully destroyed."
+    @book = Book.find(params[:id])
+       @book.destroy
       redirect_to books_path
   end
+  
 
 private
   
