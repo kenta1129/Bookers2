@@ -1,26 +1,34 @@
+<% if @user.errors.any? %>
+  <%= @user.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <h2>User info</h2>
 <table class='table'>
   <tr>
-    <td><%= image_tag 'no_image.jpg' %></td>
+    <td><%= image_tag @user.get_profile_image %></td>
   </tr>
   <tr>
     <th>name</th>
-    <th></th>
+    <th><%= @user.name %></th>
   </tr>
   <tr>
     <th>introduction</th>
-    <th></th>
+    <th><%= @user.introduction %></th>
   </tr>
 </table>
 <li>
-  <%= link_to edit_user_path(@user),class: "btn btn-outline-secondary btn-block"  do %>
-    <i class="fas fa-user-cog"> </i>
-</li>
+  <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block" do %>
+    <i class="fas fa-user-cog"></i>
 
 <% end %>
+</li>
 
-
-  <%= form_with(model: @user) do |f| %>
+  <%= form_with(model: @book) do |f| %>
   <h7>Title</h7>
   <br>
   <%= f.text_field :title %>
@@ -28,7 +36,7 @@
 
   <h7>Opinion</h7>
   <br>
-  <%= f.text_area :body, class:"form-control", rows:"3" %>
+  <%= f.text_area :body, class: "form-control", rows:"3" %>
   <br>
 
   <%= f.submit "Create Book", class: "btn btn-success" %>

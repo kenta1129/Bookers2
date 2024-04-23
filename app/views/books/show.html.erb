@@ -9,10 +9,10 @@
       <table class="table table-user-show">
         <tr>
           <td>
-            <% if @book.profile_image.attached? %>
-            <%= image_tag @book.profile_image, size: "50x50" %>
+            <% if @user.profile_image.attached? %>
+            <%= image_tag @user.profile_image, size: "100x100" %>
             <% else %>
-            <%= image_tag 'no_image', size: "50x50" %>
+            <%= image_tag 'no_image', size: "100x100" %>
              <% end %>
           </td>
           <td><%= link_to @user.name, user_path(@user) %></td>
