@@ -2,8 +2,8 @@ class UsersController < ApplicationController
   before_action :is_matching_login_user, only: [:edit, :update]
   
   def show
-    @book = Book.new
     @user = User.find(params[:id])
+    @books = @user.books
   end
   
   def edit
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     render :edit
     flash.now[:notice] = "error"
    end
- end
+  end
 
   def index
     @user = current_user

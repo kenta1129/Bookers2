@@ -34,13 +34,11 @@
       <%= image_tag 'no_image', size: "100x100" %>
       <% end %>
     </td>
-      <td><%= link_to book.title, book_path(book.id) %>
-          <% end %>    
-      </td>
-      <td><%= book.body %>
+      <td><%= link_to book.title, book_path(book.id) %></td>
+      <td><%= book.body %></td>
       <% end %>
-      </td>
-        </tr>
+   </tr>
+   <% end %>
   </tbody>
 </table>
 </div>
