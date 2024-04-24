@@ -19,11 +19,11 @@ class UsersController < ApplicationController
    if @user.update(user_params)
      flash[:notice] = "You have updated user successfully."
    redirect_to user_path(@user)
-  else
+   else
     render :edit
     flash.now[:notice] = "error"
-end
-end
+   end
+ end
 
   def index
     @user = current_user
@@ -43,6 +43,6 @@ end
     unless user.id == current_user.id
       redirect_to books_path
     end
-  end
+ end
 
 end

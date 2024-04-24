@@ -4,7 +4,7 @@ before_action :is_matching_login_user, only: [:edit, :destroy]
   def index
     @user = current_user
     @book = Book.new
-    @books = Book.page(params[:page])
+    @books = Book.all
   end
 
   def create
@@ -15,6 +15,8 @@ before_action :is_matching_login_user, only: [:edit, :destroy]
     redirect_to book_path(@book)
     
     else
+     @user = current_user
+    @books = Book.all
     render:index
     end
   end
@@ -33,19 +35,17 @@ before_action :is_matching_login_user, only: [:edit, :destroy]
   def show
     @book = Book.find(params[:id])
     @user = @book.user
+    @book_new = Book.new
   end
 
   def edit
     @book = Book.find(params[:id])
-    if @book.user = current_user
-    else
-        render :index
-    end
   end
   
   def destroy
-    @book = Book.find(params[:id])
-       @book.destroy
+    book = Book.find(params[:id])
+       book.destroy
+       flash[:notice] = "Book was successfully destroyed."
       redirect_to books_path
   end
   
@@ -55,4 +55,15 @@ private
   def book_params
     params.require(:book).permit(:title, :body, :profile_image)
   end
+
+
+def is_matching_login_user
+  book = Book.find(params[:id])
+    unless book.user.id == current_user.id
+      redirect_to books_path
+    end
 end
+  
+end
+
+
